@@ -1,0 +1,8 @@
+{
+  "name": "zn-service-util",
+  "version": "1.0.0",
+  "description": "zn-service-util",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}
