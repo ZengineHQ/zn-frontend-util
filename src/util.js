@@ -4,16 +4,16 @@
  * Useful generic utility methods
  */
 plugin.service('wgnUtil', [
-	function(){
+	function() {
 
-        /**
-         * Service
-         *
-         * @type {Object}
-         */
+		/**
+		 * Service
+		 *
+		 * @type {Object}
+		 */
 		var Service = this;
 
-        /**
+		/**
 		 * Get a UUID
 		 *
 		 * @return {String} UUID
