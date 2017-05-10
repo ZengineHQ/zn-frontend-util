@@ -50,6 +50,33 @@ plugin.service('wgnUtil', [
 
 			return array;
 		};
+		
+		/**
+		 * Parse query string into object
+		 *
+		 * @param  {String} query string
+		 *
+		 * @return {Object} params
+		 */
+		this.parseQueryString = function(keyValue) {
+
+			var obj = {},
+				key_value,
+				key;
+
+            var params = (keyValue || "").split('&');
+            
+			params.forEach(function(keyValue) {
+				if (keyValue) {
+					key_value = keyValue.split('=');
+					key = decodeURIComponent(key_value[0]);
+					obj[key] = (key_value[1] !== undefined)? decodeURIComponent(key_value[1]) : true;
+				}
+			});
+
+			return obj;
+
+		}
 
 		return this;
 
