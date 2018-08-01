@@ -1,6 +1,6 @@
 {
   "name": "@zenginehq/frontend-util",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Module including various utility methods.",
   "private": true,
   "dependencies": {},
