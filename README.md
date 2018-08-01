@@ -1,3 +1,3 @@
-# zn-frontend-util
+# Frontend Util
 
-Useful generic utility methods
+Module including various utility methods for frontend plugins.
