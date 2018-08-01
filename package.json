@@ -1,8 +1,29 @@
 {
-  "name": "zn-service-util",
-  "version": "1.0.2",
-  "description": "zn-service-util",
+  "name": "@zenginehq/frontend-util",
+  "version": "1.0.3",
+  "description": "Module including various utility methods for frontend plugins.",
   "private": true,
-  "dependencies": {},
+  "scripts": {
+    "lint": "jshint --config .jshintrc ./src || true",
+    "release": "jshint --config .jshintrc ./src && npm run build && standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZengineHQ/zn-frontend-util.git"
+  },
+  "keywords": [
+    "zn-plugin",
+    "zn-frontend",
+    "zn-module"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZengineHQ/zn-frontend-util/issues"
+  },
+  "homepage": "https://github.com/ZengineHQ/zn-frontend-util#readme",
+  "dependencies": {
+    "jshint": "^2.9.6",
+    "standard-version": "^4.4.0"
+  },
   "devDependencies": {}
 }
