@@ -1,7 +1,7 @@
 {
-  "name": "zn-service-util",
+  "name": "@zenginehq/frontend-util",
   "version": "1.0.2",
-  "description": "zn-service-util",
+  "description": "Module including various utility methods.",
   "private": true,
   "dependencies": {},
   "devDependencies": {}
