@@ -77,6 +77,104 @@ plugin.service('wgnUtil', [
 			return obj;
 
 		}
+		
+		/**
+			* Decode an encoded value.
+			*
+			* @private
+			* @param {string} value The value to be decoded.
+			*
+			* @return {string} The decoded value.
+			*/
+		var _decode = function _decode(value) {
+			var escapes, keys, reg;
+
+			escapes = {
+				'\\*dollar\\*': '$',
+				'\\*forward-slash\\*': '/',
+				'\\*left-bracket\\*': '[',
+				'\\*right-bracket\\*': ']',
+				'\\*number\\*': '#',
+				'\\*period\\*': '.'
+			};
+
+			keys = Object.keys(escapes);
+
+			keys.forEach(function(exp) {
+				reg = new RegExp(exp, 'g');
+				value = value.replace ? value.replace(reg, escapes[exp]) : value;
+			});
+
+			return value;
+		};
+
+		/**
+			* Encode a value.
+			*
+			* @private
+			* @param {string} value The value to be encoded.
+			*
+			* @return {string} The encoded value.
+			*/
+		var _encode = function _encode(value) {
+			var escapes, keys, reg;
+
+			escapes = {
+				'\\$': '*dollar*',
+				'\\/': '*forward-slash*',
+				'\\[': '*left-bracket*',
+				'\\]': '*right-bracket*',
+				'\\#': '*number*',
+				'\\.': '*period*',
+			};
+
+			keys = Object.keys(escapes);
+
+			keys.forEach(function(exp) {
+				reg = new RegExp(exp, 'g');
+				value = value.replace ? value.replace(reg, escapes[exp]) : value;
+			});
+
+			return value;
+		};
+
+		/**
+			* Format one or multiple values..
+
+			* @param {Array | Object | string} items The item(s) to be formatted.
+			* @param {boolean} parse A flag to indicate decoding or encoding;
+			*   true to decode, false to encode.
+			* @param {Array} whitelist Items to be excluded from the formatting
+					process
+
+			* @return {Object} The modified settings.
+			*/
+		this.format = function format(items, parse, whitelist) {
+			var formatter, keys, tmpKey;
+
+			formatter = parse ? _decode : _encode;
+
+			whitelist = whitelist || [];
+
+			if (Array.isArray(items)) {
+				items.forEach(function(item, index) {
+					items[index] = format(item, parse, whitelist);
+				});
+			} else if (typeof items === 'object') {
+				keys = Object.keys(items);
+				keys.forEach(function(key) {
+					if (items.hasOwnProperty(key)) {
+						tmpKey = format(key, parse, whitelist);
+						items[tmpKey] = format(items[key], parse, whitelist);
+						delete items[key];
+					}
+				})
+			} else if (whitelist.indexOf(items) === -1) {
+				items = formatter(items);
+			}
+
+			return items;
+		};
 
 		return this;
 
