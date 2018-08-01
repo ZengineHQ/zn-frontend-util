@@ -7,22 +7,13 @@ plugin.service('wgnUtil', [
 	function() {
 
 		/**
-		 * Service
-		 *
-		 * @type {Object}
-		 */
-		var Service = this;
-
-		/**
 		 * Get a UUID
 		 *
 		 * @return {String} UUID
 		 */
 		this.getUUID = function() {
-			return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-				var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-				return v.toString(16);
-			});
+		 return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+		   function(c) { return parseInt(Math.random() * 16).toString(16); });
 		};
 
 		/**
@@ -50,7 +41,7 @@ plugin.service('wgnUtil', [
 
 			return array;
 		};
-		
+
 		/**
 		 * Parse query string into object
 		 *
@@ -65,19 +56,19 @@ plugin.service('wgnUtil', [
 				key;
 
             var params = (keyValue || "").split('&');
-            
+
 			params.forEach(function(keyValue) {
 				if (keyValue) {
 					key_value = keyValue.split('=');
 					key = decodeURIComponent(key_value[0]);
-					obj[key] = (key_value[1] !== undefined)? decodeURIComponent(key_value[1]) : true;
+					obj[key] = key_value[1] !== undefined ?
+						decodeURIComponent(key_value[1]) : true;
 				}
 			});
 
 			return obj;
+		};
 
-		}
-		
 		/**
 			* Decode an encoded value.
 			*
@@ -168,7 +159,7 @@ plugin.service('wgnUtil', [
 						items[tmpKey] = format(items[key], parse, whitelist);
 						delete items[key];
 					}
-				})
+				});
 			} else if (whitelist.indexOf(items) === -1) {
 				items = formatter(items);
 			}
