@@ -1,6 +1,6 @@
 {
   "name": "@zenginehq/frontend-util",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Module including various utility methods for frontend plugins.",
   "private": true,
   "scripts": {
@@ -21,9 +21,9 @@
     "url": "https://github.com/ZengineHQ/zn-frontend-util/issues"
   },
   "homepage": "https://github.com/ZengineHQ/zn-frontend-util#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "jshint": "^2.9.6",
     "standard-version": "^4.4.0"
-  },
-  "devDependencies": {}
+  }
 }
