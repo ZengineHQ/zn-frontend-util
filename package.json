@@ -2,7 +2,6 @@
   "name": "@zenginehq/frontend-util",
   "version": "1.0.4",
   "description": "Module including various utility methods for frontend plugins.",
-  "private": true,
   "scripts": {
     "lint": "jshint --config .jshintrc ./src || true",
     "release": "jshint --config .jshintrc ./src && standard-version -t ''"
