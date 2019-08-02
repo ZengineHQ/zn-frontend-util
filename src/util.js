@@ -166,7 +166,28 @@ plugin.service('wgnUtil', [ function() {
 			}
 
 			return items;
-		};
+    };
+
+    srv.camelCase = function camelCase(str) {
+
+      if (typeof str !== 'string') { return str; }
+
+      return str
+        .replace(/(^[A-Z])|(\s[a-zA-Z])|(\s)/g,
+          function(value, capture1, capture2, capture3) {
+
+            if (capture1) { return capture1.toLowerCase(); }
+
+            if (capture2) { return capture2.trim(' ').toUpperCase(); }
+
+            if (capture3) { return capture3.trim(' '); }
+
+            return value;
+
+          }
+        );
+
+    };
 
 		return srv;
 
