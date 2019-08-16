@@ -149,21 +149,32 @@ plugin.service('wgnUtil', [ function() {
 			whitelist = whitelist || [];
 
 			if (Array.isArray(items)) {
-				items.forEach(function(item, index) {
+
+        items.forEach(function(item, index) {
 					items[index] = format(item, parse, whitelist);
 				});
-			} else if (typeof items === 'object') {
-				keys = Object.keys(items);
-				keys.forEach(function(key) {
-					if (items.hasOwnProperty(key)) {
-						tmpKey = format(key, parse, whitelist);
+
+      } else if (typeof items === 'object') {
+
+        keys = Object.keys(items);
+
+        keys.forEach(function(key) {
+
+          if (items.hasOwnProperty(key)) {
+
+            tmpKey = format(key, parse, whitelist);
 						items[tmpKey] = format(items[key], parse, whitelist);
 						delete items[key];
-					}
-				});
-			} else if (whitelist.indexOf(items) === -1) {
-				items = formatter(items);
-			}
+
+          }
+
+        });
+
+      } else if (whitelist.indexOf(items) === -1) {
+
+        items = formatter(items);
+
+      }
 
 			return items;
     };
