@@ -189,6 +189,15 @@ plugin.service('wgnUtil', [ function() {
 
     };
 
+    srv.trailingSlash = function trailingSlash(url) {
+
+      if (typeof url !== 'string') { return url; }
+
+      return url.substring(url.length - 1, url.length) !== '/' ?
+        url.concat('/') : url;
+
+    };
+
 		return srv;
 
 	}
